@@ -16,7 +16,7 @@ Installation
 
 For Rails >= 2.1:
 
-    script/plugin install git://github.com/mattmatt/acts_as_solr.git
+    script/plugin install git://github.com/greggersh/acts_as_solr.git
 
 For Rails < 2.1:
 
