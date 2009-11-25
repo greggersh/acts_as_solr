@@ -155,9 +155,13 @@ class Solr::Connection
   # send the http post request to solr; for convenience there are shortcuts
   # to some requests: add(), query(), commit(), delete() or send()
   def post(request)
-    response = @connection.post(@url.path + "/" + request.handler,
-                                request.to_s,
-                                { "Content-Type" => request.content_type })
+    #response = @connection.post(@url.path + "/" + request.handler,
+    #                            request.to_s,
+    #                            { "Content-Type" => request.content_type })
+    req = Net::HTTP::Post.new(url.path + "/" + request.handler, { "Content-Type" => request.content_type } )
+    req.basic_auth @url.user, @url.password
+    req.body = request.to_s
+    response = @connection.start { |http| http.request(req) }
   
     case response
     when Net::HTTPSuccess then response.body
