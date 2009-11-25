@@ -21,7 +21,7 @@ For Rails >= 2.1:
 For Rails < 2.1:
 
     cd vendor/plugins
-    git clone git://github.com/mattmatt/acts_as_solr.git
+    git clone git://github.com/greggersh/acts_as_solr.git
     rm -rf acts_as_solr/.git
 
 Make sure you copy `vendor/plugins/acts_as_solr/config/solr.yml` to your Rails
@@ -39,6 +39,8 @@ to start and stop the Solr web server (an embedded Jetty). If the default JVM op
 your environment, you can configure them in solr.yml with the option `jvm_options`. There is a default
 set for the production environment to have some more memory available for the JVM than the defaults, but
 feel free to change them to your liking.
+
+* Note: this version supports Basic authentication.  To use it, simple edit your congif/solr.yml file and include the username and password in the URL in the standard form: http://USERNAME:PASSWORD@HOST:PORT/PATH
 
 Basic Usage
 ======
