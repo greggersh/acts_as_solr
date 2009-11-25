@@ -159,7 +159,7 @@ class Solr::Connection
     #                            request.to_s,
     #                            { "Content-Type" => request.content_type })
     req = Net::HTTP::Post.new(url.path + "/" + request.handler, { "Content-Type" => request.content_type } )
-    req.basic_auth @url.user, @url.password
+    req.basic_auth( @url.user, @url.password ) if @url.user
     req.body = request.to_s
     response = @connection.start { |http| http.request(req) }
   
